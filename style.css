@@ -1,0 +1,110 @@
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  height: 100vh;
+  font-family: 'Poppins', sans-serif;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at center, rgba(255,77,109,0.25), rgba(0,0,0,0.9)),
+    linear-gradient(135deg, #2b0015, #000);
+}
+
+/* Pages */
+.page {
+  position: absolute;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  padding: 2rem;
+  z-index: 5;
+}
+.page.active { display: flex; }
+
+/* Page 1 */
+.page-one-bg {
+  background: url("images/birthday_love.jpeg") center/cover no-repeat;
+}
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 80, 120, 0.55);
+  backdrop-filter: blur(6px);
+}
+#page1 h1, #page1 .hint { position: relative; z-index: 2; }
+#page1 h1 { font-size: 3rem; color: white; font-weight: 900; }
+.hint { color: #ffe4ec; animation: pulse 1.5s infinite; }
+@keyframes pulse { 0%{opacity:.4} 50%{opacity:1} 100%{opacity:.4} }
+
+/* Valentine Card */
+.card {
+  position: relative;
+  background: white;
+  padding: 3rem;
+  border-radius: 2rem;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+  max-width: 420px;
+  z-index: 10;
+}
+.card::before {
+  content:"";
+  position:absolute;
+  inset:-40px;
+  background:radial-gradient(circle, rgba(255,77,109,.35), transparent 70%);
+  filter:blur(20px);
+  z-index:-1;
+}
+
+.buttons { display:flex; gap:1.5rem; justify-content:center; }
+button {
+  padding:.8rem 1.6rem;
+  font-size:1.1rem;
+  border-radius:2rem;
+  border:none;
+  cursor:pointer;
+  min-width:120px;
+  transition:transform .3s;
+}
+.yes { background:#ff4d6d; color:white; }
+.no { background:#adb5bd; color:white; position:relative; }
+.hidden { display:none; }
+
+/* HEARTS */
+#hearts-container {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+}
+.heart {
+  position:absolute;
+  font-size:1.5rem;
+  animation: floatUp linear forwards;
+  opacity:.5;
+}
+@keyframes floatUp {
+  from { transform:translateY(0) scale(1); }
+  to { transform:translateY(-110vh) scale(1.5); opacity:0; }
+}
+
+/* COLLAGE */
+#collage {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.collage-img {
+  position: absolute;
+  width: 160px;
+  border-radius: 12px;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+  opacity: 0;
+  transition:
+    transform 2s ease,
+    opacity 2s ease;
+}
